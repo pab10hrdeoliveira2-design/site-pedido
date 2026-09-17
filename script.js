@@ -1,5 +1,7 @@
 const screens = document.querySelectorAll('.screen');
 const senhaInput = document.getElementById('senha-input');
+const finalScreen = document.getElementById('final');
+const fotosCoracao = document.querySelectorAll('.foto-coracao');
 
 function mostrarTela(id) {
   screens.forEach(screen => screen.classList.remove('active'));
@@ -8,7 +10,11 @@ function mostrarTela(id) {
   tela.classList.add('active');
 
   // Sempre começa cada tela no topo.
-  if (tela.classList.contains('scrollable')) tela.scrollTop = 0;
+  if (tela.classList.contains('scrollable')) {
+    tela.scrollTop = 0;
+    requestAnimationFrame(atualizarFotos);
+  }
+
   if (tela.id === 'senha') setTimeout(() => senhaInput.focus(), 100);
 }
 
@@ -16,7 +22,7 @@ function mostrarTela(id) {
 document.querySelector('.sim-button').addEventListener('click', () => mostrarTela('senha'));
 document.querySelector('.nao-button').addEventListener('click', () => mostrarTela('nao-tela'));
 
-// IMPORTANTE: clicar na própria frase da tela "não" volta ao início.
+// Clicar na própria frase da tela "não" volta ao início.
 document.querySelector('.unavailable-button').addEventListener('click', () => mostrarTela('inicio'));
 
 // Dicas -> tela da dica.
@@ -32,10 +38,6 @@ senhaInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') verificarSenha();
 });
 
-senhaInput.addEventListener('input', () => {
-  // A validação acontece ao pressionar Enter ou ao sair do campo.
-});
-
 function verificarSenha() {
   const senha = senhaInput.value.trim().toLowerCase();
   if (senha === 'lindona') {
@@ -47,3 +49,43 @@ function verificarSenha() {
   }
 }
 
+// Faz as fotos diminuírem e ficarem mais transparentes quando chegam
+// perto da borda superior ou inferior da área visível da tela final.
+function atualizarFotos() {
+  if (!finalScreen.classList.contains('active')) return;
+
+  const viewportHeight = finalScreen.clientHeight;
+  const zonaBorda = Math.max(100, viewportHeight * 0.20);
+
+  fotosCoracao.forEach(foto => {
+    const rect = foto.getBoundingClientRect();
+    const telaRect = finalScreen.getBoundingClientRect();
+    const topo = rect.top - telaRect.top;
+    const baixo = telaRect.bottom - rect.bottom;
+
+    let proximidade = 1;
+
+    if (topo < zonaBorda) {
+      proximidade = Math.min(proximidade, Math.max(0, topo / zonaBorda));
+    }
+
+    if (baixo < zonaBorda) {
+      proximidade = Math.min(proximidade, Math.max(0, baixo / zonaBorda));
+    }
+
+    // Nunca some completamente: apenas reduz opacidade e tamanho.
+    const escala = 0.72 + (proximidade * 0.28);
+    const opacidade = 0.25 + (proximidade * 0.75);
+
+    foto.style.transform = `scale(${escala})`;
+    foto.style.opacity = opacidade;
+  });
+}
+
+finalScreen.addEventListener('scroll', atualizarFotos, { passive: true });
+window.addEventListener('resize', atualizarFotos);
+
+// Atualiza quando as imagens terminarem de carregar.
+fotosCoracao.forEach(foto => {
+  foto.addEventListener('load', atualizarFotos);
+});
