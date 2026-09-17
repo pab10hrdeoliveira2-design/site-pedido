@@ -122,3 +122,31 @@ body {
 #final img[src*="sim.png"] {
   display: none !important;
 }
+
+/* Remove o destaque azul do toque/pressionamento nos elementos interativos no celular. */
+button,
+button * ,
+a,
+a * ,
+.image-button,
+.image-button img {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button,
+button:focus,
+button:active,
+button:focus-visible,
+.image-button:focus,
+.image-button:active,
+.image-button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
