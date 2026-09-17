@@ -52,7 +52,7 @@ body {
 .center-content { justify-content: center; }
 .unavailable-button { width: 100%; max-width: 650px; }
 
-.senha-content { justify-content: center; padding-top: 5%; }
+.senha-content { justify-content: center; padding-top: 0; padding-bottom: 4%; }
 .senha-titulo { width: 100%; max-width: 650px; margin-bottom: 7%; }
 .campo-wrap { position: relative; width: 100%; max-width: 650px; }
 .campo-bg { width: 100%; display: block; }
@@ -72,6 +72,7 @@ body {
   font-family: Georgia, serif;
 }
 .dicas-button { width: 28%; max-width: 190px; margin-top: 8%; }
+.voltar-senha { width: 28%; max-width: 190px; margin-top: 5%; }
 
 .dica-content { justify-content: space-between; padding-top: 22%; padding-bottom: 7%; }
 .dica-frase { width: 100%; max-width: 650px; }
@@ -96,8 +97,16 @@ body {
   gap: 3%;
   margin-top: 2%;
 }
-.foto-coracao { width: 88%; max-width: 600px; flex: 0 0 auto; }
-.stm-final { width: 32%; max-width: 210px; margin-top: 2%; }
+.foto-coracao {
+  width: 88%;
+  max-width: 600px;
+  flex: 0 0 auto;
+  transform-origin: center center;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity .12s linear, transform .12s linear;
+  will-change: opacity, transform;
+}
 .voltar-final { width: 32%; max-width: 210px; margin-top: auto; }
 
 @media (max-width: 420px) {
