@@ -42,7 +42,7 @@ senhaInput.addEventListener('keydown', event => {
 
 function verificarSenha() {
   const senha = senhaInput.value.trim().toLowerCase();
-  if (senha === 'autista') {
+  if (senha === 'lindona') {
     senhaInput.value = '';
     mostrarTela('final');
   } else {
