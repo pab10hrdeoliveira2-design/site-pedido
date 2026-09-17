@@ -1,0 +1,109 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-height: 100%; }
+body {
+  background: #050505;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
+
+.phone {
+  position: relative;
+  width: min(100vw, calc(100svh * 9 / 16));
+  height: min(100svh, calc(100vw * 16 / 9));
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #fff url("assets/moldura.png") center / 100% 100% no-repeat;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+}
+.screen.active { display: block; }
+.screen-content {
+  position: absolute;
+  inset: 5% 8% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.image-button img { display: block; width: 100%; height: auto; pointer-events: none; }
+.image-button:active { transform: scale(.97); }
+
+.inicio-content { justify-content: center; padding-top: 20%; }
+.pergunta { width: 100%; max-width: 610px; margin-bottom: 17%; }
+.botoes-inicio { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 4%; }
+.sim-button, .nao-button { width: 39%; }
+
+.center-content { justify-content: center; }
+.unavailable-button { width: 100%; max-width: 650px; }
+
+.senha-content { justify-content: center; padding-top: 5%; }
+.senha-titulo { width: 100%; max-width: 650px; margin-bottom: 7%; }
+.campo-wrap { position: relative; width: 100%; max-width: 650px; }
+.campo-bg { width: 100%; display: block; }
+#senha-input {
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  top: 28%;
+  width: 66%;
+  height: 44%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ddd;
+  text-align: center;
+  font-size: clamp(20px, 4vw, 34px);
+  font-family: Georgia, serif;
+}
+.dicas-button { width: 28%; max-width: 190px; margin-top: 8%; }
+
+.dica-content { justify-content: space-between; padding-top: 22%; padding-bottom: 7%; }
+.dica-frase { width: 100%; max-width: 650px; }
+.voltar-button { width: 32%; max-width: 210px; }
+
+.erro-button { width: 100%; max-width: 650px; }
+
+.scrollable { overflow-y: auto; }
+.final-content {
+  min-height: 430%;
+  justify-content: flex-start;
+  padding-top: 8%;
+  padding-bottom: 8%;
+  gap: 3%;
+}
+.parabens { width: 100%; max-width: 650px; }
+.galeria-coracoes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3%;
+  margin-top: 2%;
+}
+.foto-coracao { width: 88%; max-width: 600px; flex: 0 0 auto; }
+.stm-final { width: 32%; max-width: 210px; margin-top: 2%; }
+.voltar-final { width: 32%; max-width: 210px; margin-top: auto; }
+
+@media (max-width: 420px) {
+  .screen-content { left: 7%; right: 7%; }
+  .pergunta { margin-bottom: 13%; }
+  .botoes-inicio { padding: 0 2%; }
+  .senha-content { padding-top: 0; }
+  .final-content { min-height: 430%; }
+}

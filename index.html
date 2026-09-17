@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Quer namorar comigo?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app" class="phone">
+    <!-- INÍCIO -->
+    <section id="inicio" class="screen active">
+      <div class="screen-content inicio-content">
+        <img src="assets/pergunta.png" class="pergunta" alt="Quer namorar comigo?">
+        <div class="botoes-inicio">
+          <button class="image-button sim-button" aria-label="Sim">
+            <img src="assets/sim.png" alt="SIM">
+          </button>
+          <button class="image-button nao-button" aria-label="Não">
+            <img src="assets/nao.png" alt="NÃO">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NÃO -->
+    <section id="nao-tela" class="screen">
+      <div class="screen-content center-content">
+        <button class="image-button unavailable-button" aria-label="Tentar novamente">
+          <img src="assets/nao_disponivel.png" alt="Essa opção não está disponível, tente novamente">
+        </button>
+      </div>
+    </section>
+
+    <!-- SENHA -->
+    <section id="senha" class="screen">
+      <div class="screen-content senha-content">
+        <img src="assets/senha_titulo.png" class="senha-titulo" alt="Digite a senha pra confirmar a relação">
+        <div class="campo-wrap">
+          <img src="assets/campo_senha.png" class="campo-bg" alt="">
+          <input id="senha-input" type="password" autocomplete="off" aria-label="Senha">
+        </div>
+        <button id="dicas-btn" class="image-button dicas-button" aria-label="Dicas">
+          <img src="assets/dicas.png" alt="Dicas">
+        </button>
+      </div>
+    </section>
+
+    <!-- DICA -->
+    <section id="dica" class="screen">
+      <div class="screen-content dica-content">
+        <img src="assets/dica_frase.png" class="dica-frase" alt="Você é... mas nunca foi diagnosticada.">
+        <button class="image-button voltar-button" data-target="senha" aria-label="Voltar">
+          <img src="assets/voltar.png" alt="Voltar">
+        </button>
+      </div>
+    </section>
+
+    <!-- ERRO -->
+    <section id="erro" class="screen">
+      <div class="screen-content center-content">
+        <button class="image-button erro-button" data-target="senha" aria-label="Está errada, tente novamente">
+          <img src="assets/erro_senha.png" alt="Está errada, tente novamente">
+        </button>
+      </div>
+    </section>
+
+    <!-- PARABÉNS / TELA FINAL -->
+    <section id="final" class="screen scrollable">
+      <div class="screen-content final-content">
+        <img src="assets/parabens.png" class="parabens" alt="Parabéns, agora estamos oficialmente casados">
+        <div class="galeria-coracoes" aria-label="Fotos do casal">
+          <img src="assets/foto_coracao_1.png" class="foto-coracao" alt="Foto do casal dentro de um coração com asas de morcego">
+          <img src="assets/foto_coracao_2.png" class="foto-coracao" alt="Foto do casal dentro de um coração com asas de morcego">
+          <img src="assets/foto_coracao_3.png" class="foto-coracao" alt="Foto do casal dentro de um coração com asas de morcego">
+          <img src="assets/foto_coracao_4.png" class="foto-coracao" alt="Foto do casal dentro de um coração com asas de morcego">
+        </div>
+        <img src="assets/logo_stm.png" class="stm-final" alt="STM">
+        <button class="image-button voltar-final" data-target="inicio" aria-label="Voltar ao início">
+          <img src="assets/voltar.png" alt="Voltar">
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
