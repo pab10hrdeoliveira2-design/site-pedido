@@ -116,3 +116,9 @@ body {
   .senha-content { padding-top: 0; }
   .final-content { min-height: 430%; }
 }
+
+/* A tela final nunca deve exibir o botão/imagem SIM. */
+#final .sim-button,
+#final img[src*="sim.png"] {
+  display: none !important;
+}
