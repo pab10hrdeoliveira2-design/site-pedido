@@ -1,22 +1,16 @@
 SITE "QUER NAMORAR COMIGO?"
 
+Projeto mobile em HTML, CSS e JavaScript, inspirado no vídeo de referência.
+O vídeo NÃO faz parte do projeto.
+
 Fluxo:
-1. Início: "Quer namorar comigo?"
-2. NÃO -> "Essa opção não está disponível, tente novamente".
-   Ao clicar nessa própria frase, volta para o início.
-3. SIM -> tela da senha.
-4. DICAS -> tela com a frase da dica.
-5. VOLTAR na dica -> tela da senha.
-6. Senha correta: lindona -> tela "Parabéns, agora estamos oficialmente casados".
-7. Senha errada -> tela de erro.
-8. Clicar em "Está errada, tente novamente" -> volta para a senha.
-9. Tela final é rolável e o VOLTAR no final retorna ao início.
+- Início: SIM / NÃO
+- NÃO: mensagem de opção indisponível; clicar na mensagem volta ao início
+- SIM: tela de senha
+- Senha correta: lindona
+- DICAS: mostra a dica e VOLTAR retorna à senha
+- Senha errada: tela de erro e retorno à senha
+- Tela final: parabéns + galeria de fotos + VOLTAR
 
-A moldura, textos e elementos gráficos foram feitos usando as imagens enviadas e o vídeo de referência.
-Os arquivos ficam dentro da pasta assets.
-
-
-Atualização de 16/09/2026:
-- As imagens oficiais de "QUER NAMORAR COMIGO?" e "NÃO" recebidas foram colocadas no projeto.
-- As quatro novas imagens do coração foram adicionadas à tela final em uma galeria vertical, seguindo a ideia de tela rolável do vídeo de referência.
-- O vídeo de referência não faz parte do projeto.
+A tela final tem rolagem vertical. As fotos diminuem de tamanho e opacidade
+quando se aproximam das bordas superior e inferior da área visível.
