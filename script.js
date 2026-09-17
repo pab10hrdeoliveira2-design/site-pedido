@@ -11,6 +11,8 @@ function mostrarTela(id) {
 
   // Sempre começa cada tela no topo.
   if (tela.classList.contains('scrollable')) {
+    // Garantia extra: a tela final não possui/não exibe o botão SIM.
+    tela.querySelectorAll('.sim-button, img[src*="sim.png"]').forEach(el => el.remove());
     tela.scrollTop = 0;
     requestAnimationFrame(atualizarFotos);
   }
