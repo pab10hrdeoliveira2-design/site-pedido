@@ -2,12 +2,33 @@ const screens = document.querySelectorAll('.screen');
 const senhaInput = document.getElementById('senha-input');
 const finalScreen = document.getElementById('final');
 const fotosCoracao = document.querySelectorAll('.foto-coracao');
+const transicao = document.getElementById('transicao');
+let transicaoTimer = null;
+
+function executarTransicao() {
+  if (!transicao) return;
+
+  if (transicaoTimer) clearTimeout(transicaoTimer);
+
+  // Substituir a imagem reinicia a animação APNG a cada troca de tela.
+  const atual = transicao.querySelector('img');
+  const nova = atual.cloneNode(true);
+  transicao.replaceChild(nova, atual);
+
+  transicao.classList.add('active');
+
+  // A animação tem aproximadamente 2,8 segundos, como no vídeo de referência.
+  transicaoTimer = setTimeout(() => {
+    transicao.classList.remove('active');
+  }, 2850);
+}
 
 function mostrarTela(id) {
   screens.forEach(screen => screen.classList.remove('active'));
   const tela = document.getElementById(id);
   if (!tela) return;
   tela.classList.add('active');
+  executarTransicao();
 
   // Sempre começa cada tela no topo.
   if (tela.classList.contains('scrollable')) {
@@ -42,7 +63,7 @@ senhaInput.addEventListener('keydown', event => {
 
 function verificarSenha() {
   const senha = senhaInput.value.trim().toLowerCase();
-  if (senha === 'autista') {
+  if (senha === 'lindona') {
     senhaInput.value = '';
     mostrarTela('final');
   } else {
