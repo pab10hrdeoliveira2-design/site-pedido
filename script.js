@@ -10,14 +10,16 @@ function executarTransicao() {
 
   if (transicaoTimer) clearTimeout(transicaoTimer);
 
-  // Substituir a imagem reinicia a animação APNG a cada troca de tela.
+  // Reinicia a animação APNG a cada troca de tela, forçando um novo carregamento.
   const atual = transicao.querySelector('img');
-  const nova = atual.cloneNode(true);
+  const nova = atual.cloneNode(false);
+  nova.src = `assets/transicao_morcegos.png?v=${Date.now()}`;
   transicao.replaceChild(nova, atual);
 
+  // Mostra a camada por cima da tela atual.
   transicao.classList.add('active');
 
-  // A animação tem aproximadamente 2,8 segundos, como no vídeo de referência.
+  // A transição baseada no vídeo dura cerca de 2,8 segundos.
   transicaoTimer = setTimeout(() => {
     transicao.classList.remove('active');
   }, 2850);
