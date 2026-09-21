@@ -150,3 +150,26 @@ button:focus-visible,
 button::-moz-focus-inner {
   border: 0;
 }
+
+
+/* Transição de morcegos entre as telas. */
+.transicao {
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+.transicao.active {
+  display: flex;
+}
+.transicao img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
